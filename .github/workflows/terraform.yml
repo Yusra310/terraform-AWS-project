@@ -29,7 +29,7 @@ jobs:
         run: terraform init  # Initialize Terraform
 
       - name: Terraform Plan
-        run: terraform plan -out=tfplan  # Create a plan file
+        run: terraform plan  # Create a plan review
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve tfplan  # Apply the plan to create or modify AWS resources
+        run: terraform apply -auto-approve  # Apply the plan to create or modify AWS resources
