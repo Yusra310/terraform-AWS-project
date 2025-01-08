@@ -56,9 +56,4 @@ jobs:
         run: |
           zip -r code.zip lambda_function.py  # Adjust path if necessary, make sure to include any dependencies
 
-      # Use AWS CLI to update the Lambda function code using the ARN
-      - name: Update Lambda function code using AWS CLI
-        run: |
-          aws lambda update-function-code \
-            --function-name ${{ env.LAMBDA_ARN }} \
-            --zip-file fileb://code.zip
+
