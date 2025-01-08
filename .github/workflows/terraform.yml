@@ -8,8 +8,6 @@ on:
 jobs:
   terraform:
     runs-on: ubuntu-latest  # Specify the runner type
-    environment: aws
-    
 
     steps:
       - name: Checkout repository
@@ -27,11 +25,22 @@ jobs:
         with:
           terraform_version: 1.0.0  # Specify the Terraform version you need
 
+      # Zip Lambda Function Code
+      - name: Zip Lambda Deployment Package
+        run: |
+          # Clean the folder if needed (optional)
+          rm -rf lambda_function.zip
+          
+          # Assuming lambda function is in lambda_function.py (adjust for your use case)
+          zip -r lambda_function.zip lambda_function.py $(ls -d */)  # Include Lambda function and any dependencies
+
       - name: Terraform Init
         run: terraform init  # Initialize Terraform
 
       - name: Terraform Plan
-        run: terraform plan  # Create a plan review
+        run: terraform plan -out=tfplan  # Create a plan file
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve  # Apply the plan to create or modify AWS resources
+        run: terraform apply -auto-approve tfplan  # Apply the plan to create or modify AWS resources
+
+     
