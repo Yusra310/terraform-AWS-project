@@ -3,7 +3,7 @@ resource "aws_lambda_function" "Demo_lambda" {
   role          = var.lambda_role_arn # The IAM role ARN that allows the Lambda to execute
 
   # The path to the ZIP file that contains the Lambda function code
-  filename      = "./Lambda/lambda_function.py" 
+  filename      = "./Lambda/lambda_function.zip" 
   architectures = ["x86_64"]
 
   handler       = "lambda_function.lambda_handler" # The entry point in your Python file (assuming "handler" function inside "Lambda_function.py")
