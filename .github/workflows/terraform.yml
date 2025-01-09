@@ -43,13 +43,6 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
 
-      # Fetch Lambda ARN from Terraform output
-      - name: Get Lambda ARN from Terraform output
-        id: lambda_arn
-        run: |
-          LAMBDA_ARN=$(terraform output -raw lambda_function_arn)
-          echo "Lambda ARN is: $LAMBDA_ARN"
-          echo "LAMBDA_ARN=$LAMBDA_ARN" >> $GITHUB_ENV  # Set ARN as an environment variable
 
       # Create a zip file of your Lambda function (make sure to adjust the path if needed)
       - name: Create zip file for Lambda function
