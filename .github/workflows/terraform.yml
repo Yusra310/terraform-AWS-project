@@ -44,9 +44,5 @@ jobs:
         run: terraform apply -auto-approve tfplan
 
 
-      # Create a zip file of your Lambda function (make sure to adjust the path if needed)
-      - name: Create zip file for Lambda function
-        run: |
-          zip -r code.zip lambda_function.py  # Adjust path if necessary, make sure to include any dependencies
 
 
