@@ -13,9 +13,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # Install zip tool
-      - name: Install zip tool
-        uses: montudor/action-zip@v1
 
       # Set up AWS credentials for AWS CLI
       - name: Set up AWS credentials
